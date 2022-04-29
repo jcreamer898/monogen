@@ -1,6 +1,6 @@
 {
   "name": "monogen",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Quickly generate monorepo for testing.",
   "main": "src/index.js",
 
