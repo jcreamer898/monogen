@@ -5,7 +5,7 @@
   "main": "src/index.js",
 
   "scripts": {
-    "test": "node bin/index.js"
+    "start": "node bin/index.js"
   },
   "bin": "./bin/index.js",
   "keywords": [
