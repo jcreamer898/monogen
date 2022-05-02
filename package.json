@@ -2,23 +2,27 @@
   "name": "monogen",
   "version": "0.1.2",
   "description": "Quickly generate monorepo for testing.",
+  "license": "MIT",
+  "author": "Jonathan Creamer",
+  "type": "module",
   "main": "src/index.js",
-
+  "bin": "./bin/index.js",
   "scripts": {
+    "format": "prettier --write src/**/*.{js,json,md,yml} && prettier-package-json --write ./package.json",
     "start": "node bin/index.js"
   },
-  "bin": "./bin/index.js",
-  "keywords": [
-    "monorepo",
-    "generator",
-    "scaffold"
-  ],
-  "type": "module",
-  "author": "Jonathan Creamer",
-  "license": "MIT",
   "dependencies": {
     "handlebars": "^4.7.7",
     "human-id": "^3.0.0",
     "plop": "^3.1.0"
-  }
+  },
+  "devDependencies": {
+    "prettier": "^2.6.2",
+    "prettier-package-json": "^2.6.3"
+  },
+  "keywords": [
+    "generator",
+    "monorepo",
+    "scaffold"
+  ]
 }
