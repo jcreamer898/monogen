@@ -1,7 +1,11 @@
 {
   "name": "monogen",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Quickly generate monorepo for testing.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jcreamer898/monogen"  
+  },
   "license": "MIT",
   "author": "Jonathan Creamer",
   "type": "module",
