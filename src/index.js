@@ -1,6 +1,10 @@
 import fs from "fs";
 import path from "path";
 import { humanId } from "human-id";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 /**
  * Call cb <count> number of times times
@@ -29,15 +33,18 @@ const times = async function (count, cb) {
  * @property {number} howMany
  */
 
+const templatesDir = path.join(__dirname, "..", "templates");
+
 const rootPackageJsonTemplates = {
-  yarn: "./templates/yarnRootPackageJson.hbs",
-  pnpm: "./templates/pnpmRootPackageJson.hbs",
-  npm: "./templates/npmRootPackageJson.hbs",
+  yarn: path.join(templatesDir, "yarnRootPackageJson.hbs"),
+  pnpm: path.join(templatesDir, "pnpmRootPackageJson.hbs"),
+  npm: path.join(templatesDir, "npmRootPackageJson.hbs"),
 };
 
-const monorepoPackageTemplate = "./templates/package.json.hbs";
-const sourceFileTemplate = "./templates/index.ts.hbs";
-const pnpmWorkspsaceFile = "./templates/pnpm-workspace.yaml.hbs";
+
+const monorepoPackageTemplate = path.join(templatesDir, "package.json.hbs");
+const sourceFileTemplate = path.join(templatesDir, "index.ts.hbs");
+const pnpmWorkspsaceFile = path.join(templatesDir, "pnpm-workspace.yaml.hbs");
 
 /**
  * @param {Config} config
@@ -54,14 +61,14 @@ export const createMonorepo = (plop) => async (config) => {
     const packageJsonTemplate = rootPackageJsonTemplates[config.kind];    
 
     const templateContents = await fs.promises.readFile(
-      path.resolve(monorepoPackageTemplate)
+      monorepoPackageTemplate
     );
 
     const rootPackageJsonTemplate = await fs.promises.readFile(
-      path.resolve(packageJsonTemplate)
+      packageJsonTemplate
     );
     const srcIndexContents = await fs.promises.readFile(
-      path.resolve(sourceFileTemplate)
+      sourceFileTemplate
     );
     const rootPackageJson = plop.renderString(
       rootPackageJsonTemplate.toString(),
@@ -77,7 +84,7 @@ export const createMonorepo = (plop) => async (config) => {
 
     if (config.kind === "pnpm") {
       const pnpmWorkspaceFile = await fs.promises.readFile(
-        path.resolve(pnpmWorkspsaceFile)
+        pnpmWorkspsaceFile
       );
       await fs.promises.writeFile(
         path.join(outputDir, "pnpm-workspace.yaml"),
