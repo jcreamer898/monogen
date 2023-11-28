@@ -24,21 +24,15 @@ export default function (plop) {
       },
       {
         type: "input",
-        name: "packageJsonTemplate",
-        message: "Path to package template?",
-        default: path.resolve(__dirname, "templates/package.json.hbs"),
+        name: "scope",
+        message: "Packege scope? e.g. @foo",
+        default: "@foo",
       },
       {
         type: "input",
-        name: "rootPackageJsonTemplate",
-        message: "Path to root package template?",
-        default: path.resolve(__dirname, "templates/rootPackageJson.hbs"),
-      },
-      {
-        type: "input",
-        name: "srcTemplate",
-        message: "Path to src/index.ts template?",
-        default: path.resolve(__dirname, "templates/index.ts.hbs"),
+        name: "kind",
+        message: "What kind of monorepo?",
+        default: "yarn"
       },
       {
         type: "input",

@@ -1,6 +1,0 @@
-{
-  "packageCount": 50,
-  "packageJsonTemplate": "./templates/package.json.hbs",
-  "packageTemplate": "./templates/package",
-  "outputDirectory": "./examples"
-}
